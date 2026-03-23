@@ -46,7 +46,7 @@ body {
   color: var(--cream);
   background: var(--bg);
 }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
 a:hover { opacity: 0.8; }
 ul, ol { list-style: none; }
@@ -59,7 +59,7 @@ ul, ol { list-style: none; }
 }
 
 .section {
-  padding: var(--space-2xl) 0;
+  padding: 48px 0;
   border-bottom: 1px solid var(--border-subtle);
 }
 .section:last-of-type { border-bottom: none; }
@@ -320,7 +320,7 @@ h4 {
 @media (max-width: 480px) {
   .stat-bar,
   .stat-bar--5 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -353,7 +353,8 @@ h4 {
 /* ================================================================
    6. DATA TABLES
    ================================================================ */
-.table-wrap {
+.table-wrap,
+.table-wrapper {
   overflow-x: auto;
   margin: var(--space-lg) 0;
   -webkit-overflow-scrolling: touch;
@@ -716,17 +717,7 @@ a.card-link:hover {
   max-width: none;
 }
 
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-  .footer-bottom {
-    flex-direction: column;
-    gap: var(--space-sm);
-    text-align: center;
-  }
-}
+/* Mobile footer handled in consolidated mobile block below */
 
 /* ================================================================
    17. COMPLIANCE NOTE
@@ -773,6 +764,104 @@ p { margin-bottom: var(--space-md); }
 p:last-child { margin-bottom: 0; }
 .section h3 { margin-top: var(--space-xl); }
 .section h3:first-child { margin-top: 0; }
+
+/* ================================================================
+   FOOTER-INNER LAYOUT (used by board dossier pages)
+   ================================================================ */
+.footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-xl);
+}
+.footer-links {
+  display: flex;
+  gap: var(--space-lg);
+}
+.footer-links li a {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--cream-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  opacity: 1;
+}
+.footer-links li a:hover {
+  color: var(--cream);
+}
+
+/* ================================================================
+   MOBILE RESPONSIVE — screens under 768px
+   ================================================================ */
+@media (max-width: 768px) {
+  /* 1. Typography */
+  body { font-size: 0.95rem; line-height: 1.7; }
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2rem; }
+  .exhibit-finding { font-size: 1rem; }
+
+  /* 2. Pull quotes */
+  .pull-quote p { font-size: 1.1rem; }
+  .pull-quote { border-left: 4px solid var(--accent); }
+
+  /* 3. Nav — 44px touch targets */
+  .nav-links li a {
+    display: block;
+    min-height: 44px;
+    line-height: 44px;
+    padding: 0 var(--space-sm);
+  }
+
+  /* 4. Hero — 24px side padding */
+  .hero .container {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+  .hero { padding-top: var(--space-xl); }
+
+  /* 5. Breadcrumb — wrap, no overflow */
+  [aria-label="Breadcrumb"] p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* 6. Footer — footer-grid stacks to single column */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  /* Footer — footer-inner stacks vertically */
+  .footer-inner {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+
+  /* 7. Tables — ensure readable at mobile widths */
+  table { font-size: 13px; }
+  thead th { font-size: 10px; }
+}
+
+/* 390px (iPhone 14) tightening */
+@media (max-width: 420px) {
+  h1 { font-size: 2.2rem; }
+  .stat-number { font-size: 1.6rem; }
+  .stat-bar .stat { padding: var(--space-md); }
+  table { font-size: 12px; }
+  thead th { font-size: 9px; padding: var(--space-xs) var(--space-sm); }
+  tbody td { padding: var(--space-xs) var(--space-sm); }
+}
 
 /* ================================================================
    PRINT STYLESHEET
