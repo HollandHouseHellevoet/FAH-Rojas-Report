@@ -353,7 +353,8 @@ h4 {
 /* ================================================================
    6. DATA TABLES
    ================================================================ */
-.table-wrap {
+.table-wrap,
+.table-wrapper {
   overflow-x: auto;
   margin: var(--space-lg) 0;
   -webkit-overflow-scrolling: touch;
@@ -773,6 +774,77 @@ p { margin-bottom: var(--space-md); }
 p:last-child { margin-bottom: 0; }
 .section h3 { margin-top: var(--space-xl); }
 .section h3:first-child { margin-top: 0; }
+
+/* ================================================================
+   MOBILE AUDIT — screens under 768px
+   ================================================================ */
+@media (max-width: 768px) {
+  /* 3. Typography */
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2rem; }
+  .exhibit-finding { font-size: 1rem; }
+  body { font-size: 0.95rem; line-height: 1.7; }
+
+  /* 4. Pull quotes */
+  .pull-quote p { font-size: 1.1rem; }
+  .pull-quote { border-left: 4px solid var(--accent); }
+
+  /* 5. Nav — 44px touch targets */
+  .nav-links li a {
+    display: block;
+    min-height: 44px;
+    line-height: 44px;
+    padding: 0 var(--space-sm);
+  }
+
+  /* 6. Hero — 24px side padding */
+  .hero .container {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+
+  /* 7. Breadcrumb — wrap, no overflow */
+  [aria-label="Breadcrumb"] p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* 8. Footer — stack with 24px spacing */
+  .footer-inner {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
+/* Footer-inner base layout (not in original CSS) */
+.footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-xl);
+}
+.footer-links {
+  display: flex;
+  gap: var(--space-lg);
+}
+.footer-links li a {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--cream-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  opacity: 1;
+}
+.footer-links li a:hover {
+  color: var(--cream);
+}
 
 /* ================================================================
    PRINT STYLESHEET
