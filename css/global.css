@@ -59,7 +59,7 @@ ul, ol { list-style: none; }
 }
 
 .section {
-  padding: var(--space-2xl) 0;
+  padding: 48px 0;
   border-bottom: 1px solid var(--border-subtle);
 }
 .section:last-of-type { border-bottom: none; }
@@ -320,7 +320,7 @@ h4 {
 @media (max-width: 480px) {
   .stat-bar,
   .stat-bar--5 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
